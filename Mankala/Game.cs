@@ -37,6 +37,7 @@ namespace Mankala
             while (!InputHelper.KeyPressed('Q'))
             {
                 view.Draw(board, players[currentPlayer]);
+                players[currentPlayer].Move(ruleset);
                 NextPlayer();
             }
         }

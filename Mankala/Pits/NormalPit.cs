@@ -15,7 +15,7 @@ namespace Mankala.Pits
         {
             int s = stones;
             stones = 0;
-            return stones;
+            return s;
         }
     }
 }
