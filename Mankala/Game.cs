@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Mankala.Rules;
 using Mankala.Pits;
+using Mankala.Factory;
 
 namespace Mankala
 {
@@ -17,29 +18,18 @@ namespace Mankala
 
         public Game()
         {
-
+            view = new View();
         }
 
         public void MakeGame()
         {
-            players = new Player[2];
-            players[0] = new Player("Player 1");
-            players[1] = new Player("Player 2");
+            GameFactory factory = new WariFactory();
+            board = factory.MakeBoard(5);
+            players = factory.MakePlayers(board);
+            score = factory.MakeScore();
+            ruleset = factory.MakeRuleSet();
+
             currentPlayer = 0;
-
-            ruleset = new WariRule();
-
-            view = new View();
-
-            Pit pit = new NormalPit(5);
-
-            board = new Pit[3];
-            board[0] = new HomePit(2);
-            board[1] = pit;
-            board[2] = new NormalPit(3);
-
-            players[0].pits = new Pit[1];
-            players[0].pits[0] = pit; 
         }
 
         public void Run()
