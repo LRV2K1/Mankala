@@ -34,7 +34,11 @@ namespace Mankala
 
         public void Run()
         {
-            view.Draw(board, players[currentPlayer]);
+            while (!InputHelper.KeyPressed('Q'))
+            {
+                view.Draw(board, players[currentPlayer]);
+                NextPlayer();
+            }
         }
 
         private void NextPlayer()

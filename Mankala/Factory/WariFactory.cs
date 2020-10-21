@@ -56,6 +56,9 @@ namespace Mankala.Factory
             players[0].pits = new Pit[board.Length / 2];
             players[1].pits = new Pit[board.Length / 2];
 
+            players[0].collector = new CollectionPit();
+            players[1].collector = new CollectionPit();
+
             for (int i = 0; i < board.Length/2; i++)
             {
                 players[0].pits[i] = board[i];
