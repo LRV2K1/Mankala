@@ -15,12 +15,12 @@ namespace Mankala.Pits
 
         int ICollector.GetStoneScore()
         {
-            return 0;
+            return stones;
         }
 
         void ICollector.CollectStones(int n)
         {
-
+            PlaceStone(n);
         }
     }
 }

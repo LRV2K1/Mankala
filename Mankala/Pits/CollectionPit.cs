@@ -14,12 +14,12 @@ namespace Mankala.Pits
 
         public int GetStoneScore()
         {
-            return 0;
+            return stones;
         }
 
         public void CollectStones(int n)
         {
-
+            stones += n;
         }
     }
 }
