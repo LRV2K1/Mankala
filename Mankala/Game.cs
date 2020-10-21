@@ -26,6 +26,8 @@ namespace Mankala
             players[0] = new Player();
             players[1] = new Player();
             currentPlayer = players[0];
+
+            ruleset = new WariRule();
         }
 
         public void Run()
@@ -34,7 +36,10 @@ namespace Mankala
 
         private void NextPlayer()
         {
-
+            if (currentPlayer == players[0])
+                currentPlayer = players[1];
+            else
+                currentPlayer = players[0];
         }
 
         private void Score()

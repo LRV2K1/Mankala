@@ -4,7 +4,12 @@ using System.Text;
 
 namespace Mankala.Pits
 {
-    class NormalPit
+    public class NormalPit : Pit
     {
+        public NormalPit(int stones)
+            : base(stones)
+        {
+
+        }
     }
 }

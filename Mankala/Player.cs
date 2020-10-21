@@ -13,12 +13,10 @@ namespace Mankala
 
         public Player()
         {
-
         }
 
         public void Move(Ruleset rules)
         {
-
         }
     }
 }

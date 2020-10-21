@@ -4,7 +4,22 @@ using System.Text;
 
 namespace Mankala.Pits
 {
-    class CollectionPit
+    public class CollectionPit : ICollector
     {
+        public int stones { get; set; }
+
+        public CollectionPit()
+        {
+        }
+
+        public int GetStoneScore()
+        {
+            return 0;
+        }
+
+        public void CollectStones(int n)
+        {
+
+        }
     }
 }
