@@ -9,12 +9,15 @@ namespace Mankala
         public static bool KeyPressed(char c)
         {
             ConsoleKeyInfo cki = Console.ReadKey();
+            Console.Write("\b");
             return cki.KeyChar == c;
         }
 
         public static char GetKey()
         {
-            return Console.ReadKey().KeyChar;
+            ConsoleKeyInfo cki = Console.ReadKey();
+            Console.Write("\b");
+            return cki.KeyChar;
         }
     }
 }
