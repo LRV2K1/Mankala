@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Mankala.Ruleset
+namespace Mankala.Rules
 {
-    class MankalaRule
+    class Ruleset
     {
     }
 }

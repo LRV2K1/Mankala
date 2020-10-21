@@ -4,9 +4,19 @@ namespace Mankala
 {
     class Program
     {
-        static void Main(string[] args)
+        Game game;
+
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+            Program program = new Program();
+            program.Run();
+        }
+
+        public void Run()
+        {
+            game = new Game();
+            game.MakeGame();
+            game.Run();
         }
     }
 }
