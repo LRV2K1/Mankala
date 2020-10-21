@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Mankala.Pits
 {
-    interface ICollector
+    public interface ICollector
     {
     }
 }

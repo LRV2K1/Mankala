@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Mankala.Pits
 {
-    class Pit
+    public abstract class Pit
     {
     }
 }

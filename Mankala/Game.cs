@@ -22,32 +22,14 @@ namespace Mankala
 
         public void MakeGame()
         {
-            if (InputHelper.KeyPressed(' '))
-            {
-                Console.WriteLine("test");
-            }
-            else
-            {
-                Console.WriteLine("fout");
-            }
+            players = new Player[2];
+            players[0] = new Player();
+            players[1] = new Player();
+            currentPlayer = players[0];
         }
 
         public void Run()
         {
-            int i = 0;
-            while (true)
-            {
-                char key = InputHelper.GetKey();
-                if (key == 'L')
-                {
-                    Console.WriteLine("Lourens " + i);
-                    i++;
-                }
-                else if (key == 'Q')
-                {
-                    break;
-                }
-            }
         }
 
         private void NextPlayer()
