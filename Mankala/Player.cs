@@ -8,11 +8,13 @@ namespace Mankala
 {
     public class Player
     {
+        public string name;
         public ICollector collector;
         public Pit[] pits;
 
-        public Player()
+        public Player(string name)
         {
+            this.name = name;
         }
 
         public void Move(Ruleset rules)
