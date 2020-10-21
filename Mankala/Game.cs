@@ -9,7 +9,7 @@ namespace Mankala
     public class Game
     {
         Player[] players;
-        Player currentPlayer;
+        int currentPlayer;
         View view;
         Ruleset ruleset;
         Pit[] board;
@@ -25,9 +25,11 @@ namespace Mankala
             players = new Player[2];
             players[0] = new Player();
             players[1] = new Player();
-            currentPlayer = players[0];
+            currentPlayer = 0;
 
             ruleset = new WariRule();
+
+            view = new View();
         }
 
         public void Run()
@@ -36,10 +38,8 @@ namespace Mankala
 
         private void NextPlayer()
         {
-            if (currentPlayer == players[0])
-                currentPlayer = players[1];
-            else
-                currentPlayer = players[0];
+            currentPlayer++;
+            currentPlayer %= players.Length;
         }
 
         private void Score()
