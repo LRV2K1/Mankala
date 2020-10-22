@@ -49,9 +49,7 @@ namespace Mankala.Factory
 
         public override Player[] MakePlayers(Pit[] board)
         {
-            Player[] players = new Player[2];
-            players[0] = new Player("Player 1");
-            players[1] = new Player("Player 2");
+            Player[] players = base.MakePlayers(board);
 
             players[0].pits = new Pit[board.Length / 2];
             players[1].pits = new Pit[board.Length / 2];

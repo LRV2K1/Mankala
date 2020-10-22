@@ -19,8 +19,8 @@ namespace Mankala
 
         public void Move(Ruleset rules)
         {
-            int n = (pits[0] as NormalPit).takeStones();
-            Pit p = pits[0];
+            int n = (pits[1] as NormalPit).takeStones();
+            Pit p = pits[1];
             while (n > 0)
             {
                 p = p.next;

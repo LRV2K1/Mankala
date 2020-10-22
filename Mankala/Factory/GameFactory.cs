@@ -15,7 +15,14 @@ namespace Mankala.Factory
 
         public abstract Ruleset MakeRuleSet();
 
-        public abstract Player[] MakePlayers(Pit[] board);
+        public virtual Player[] MakePlayers(Pit[] board)
+        {
+            Player[] players = new Player[2];
+            players[0] = new Player("Player 1");
+            players[1] = new Player("Player 2");
+
+            return players;
+        }
 
         public Score MakeScore()
         {

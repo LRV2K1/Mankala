@@ -29,9 +29,9 @@ namespace Mankala
                     Console.ForegroundColor = ConsoleColor.Blue;
 
                 if (i < board.Length / 2)
-                    DrawPit(board[i], i * 5, 1);
+                    DrawPit(board[i],(board.Length/2 - i - 1) * 7, 1);
                 else
-                    DrawPit(board[i], (i - board.Length / 2) * 5, 4);
+                    DrawPit(board[i], (i - board.Length / 2) * 7, 6);
             }
 
             Console.ResetColor();
@@ -50,11 +50,15 @@ namespace Mankala
         private void DrawPit(Pit pit, int left, int top)
         {
             Console.SetCursorPosition(left, top);
-            Console.Write("+---+");
+            Console.Write("+-----+");
             Console.SetCursorPosition(left, top + 1);
-            Console.Write("| " + pit.stones + " |");
+            Console.Write("|     |");
             Console.SetCursorPosition(left, top + 2);
-            Console.Write("+---+");
+            Console.Write("|  " + pit.stones + "  |");
+            Console.SetCursorPosition(left, top + 3);
+            Console.Write("|     |");
+            Console.SetCursorPosition(left, top + 4);
+            Console.Write("+-----+");
         }
     }
 }
