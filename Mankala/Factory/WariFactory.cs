@@ -51,16 +51,16 @@ namespace Mankala.Factory
         {
             Player[] players = base.MakePlayers(board);
 
-            players[0].pits = new Pit[board.Length / 2];
-            players[1].pits = new Pit[board.Length / 2];
+            players[0].pits = new NormalPit[board.Length / 2];
+            players[1].pits = new NormalPit[board.Length / 2];
 
             players[0].collector = new CollectionPit();
             players[1].collector = new CollectionPit();
 
             for (int i = 0; i < board.Length/2; i++)
             {
-                players[0].pits[i] = board[i];
-                players[1].pits[i] = board[i + board.Length / 2];
+                players[0].pits[i] = (board[i] as NormalPit);
+                players[1].pits[i] = (board[i + board.Length / 2] as NormalPit);
             }
 
             return players;

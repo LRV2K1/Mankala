@@ -12,7 +12,7 @@ namespace Mankala
 
         public void Draw(Pit[] board, Player player)
         {
-            List<Pit> playerpits = player.pits.ToList();
+            List<NormalPit> playerpits = player.pits.ToList();
 
             Console.Clear();
 
@@ -44,6 +44,13 @@ namespace Mankala
 
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Players " + players.Length);
+            Console.ResetColor();
+        }
+
+        public void DrawString(string s)
+        {
+            Console.Clear();
+            Console.Write(s);
             Console.ResetColor();
         }
 

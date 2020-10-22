@@ -10,7 +10,7 @@ namespace Mankala
     {
         public string name;
         public ICollector collector;
-        public Pit[] pits;
+        public NormalPit[] pits;
 
         public Player(string name)
         {

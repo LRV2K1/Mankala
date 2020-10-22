@@ -16,14 +16,21 @@ namespace Mankala.Rules
 
         public abstract bool NextPlayer(Pit pit, Player player);
 
-        public virtual bool GameFinished(Player[] players)
+        public virtual bool GameFinished(Player[] players, int currentplayer)
         {
-            return true;
+            return !HasMoves(players[currentplayer]);
         }
 
         public virtual bool HasMoves(Player player)
         {
-            return true;
+            for (int i = 0; i < player.pits.Length; i++)
+            {
+                if (player.pits[i].stones > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
