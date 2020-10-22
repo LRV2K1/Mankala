@@ -19,14 +19,26 @@ namespace Mankala
 
         public void Move(Ruleset rules)
         {
-            int n = (pits[1] as NormalPit).takeStones();
-            Pit p = pits[1];
-            while (n > 0)
+            char c = InputHelper.GetKey();
+            while ((int)Char.GetNumericValue(c) >= pits.Length || (int)Char.GetNumericValue(c) < 0)
             {
-                p = p.next;
-                p.PlaceStone(1);
-                n--;
+                c = InputHelper.GetKey();
             }
+
+            Pit p = pits[(int)Char.GetNumericValue(c)];
+
+            do
+            {
+                int n = (p as NormalPit).takeStones();
+                while (n > 0)
+                {
+                    p = p.next;
+                    p.PlaceStone(1);
+                    n--;
+                }
+                rules.MoveEnd(p, this);
+            }
+            while (!rules.NextPlayer(p, this));
         }
     }
 }

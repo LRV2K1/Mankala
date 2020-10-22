@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using Mankala.Pits;
 
 namespace Mankala.Rules
@@ -8,17 +9,19 @@ namespace Mankala.Rules
     public class WariRule : Ruleset
     {
         public WariRule()
-            : base()
-        {
-
-        }
+            : base() { }
 
         public override void MoveEnd(Pit pit, Player player)
         {
-            char key = InputHelper.GetKey();
-            if (key == 'L')
+            List<NormalPit> playerpits = player.pits.ToList();
+
+            if (!playerpits.Contains(pit))
             {
-                player.Move(this);
+                if (pit.stones > 1 && pit.stones < 4)
+                {
+                    player.collector.CollectStones(pit.stones);
+                    pit.stones = 0;
+                }
             }
         }
 

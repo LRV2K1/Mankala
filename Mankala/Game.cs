@@ -23,7 +23,7 @@ namespace Mankala
 
         public void MakeGame()
         {
-            GameFactory factory = new MankalaFactory();
+            GameFactory factory = new WariFactory();
             board = factory.MakeBoard(10);
             players = factory.MakePlayers(board);
             score = factory.MakeScore();
