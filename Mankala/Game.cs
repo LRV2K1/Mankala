@@ -25,13 +25,13 @@ namespace Mankala
 
             bool modeSelected = false;
 
-            view.DrawString("enter 1 for mankala and 2 for wari");
 
             while (!modeSelected)
             {
+                view.DrawString("enter 1 for mankala and 2 for wari");
                 int mode = 0;
-                try { mode = (int)Char.GetNumericValue(InputHelper.GetKey()); }
-                catch { view.DrawString("not a valid game mode, enter 1 for mankala and 2 for wari"); }
+                try { mode = (int)Char.GetNumericValue(InputHelper.GetKey()); view.Clear(); }
+                catch { view.DrawString("not a valid game mode"); }
                 switch (mode)
                 {
                     case 1:
@@ -39,7 +39,7 @@ namespace Mankala
                     case 2:
                         factory = new WariFactory(); modeSelected = true; break;
                     default:
-                        view.DrawString("not a valid game mode, enter 1 for mankala and 2 for wari"); break;
+                        view.DrawString("not a valid game mode"); break;
                 }
             }
            
@@ -61,6 +61,8 @@ namespace Mankala
                 players[currentPlayer].Move(ruleset);
                 NextPlayer();
             }
+            view.Draw(players[currentPlayer]);
+            Score();
         }
 
         private void NextPlayer()
@@ -71,7 +73,12 @@ namespace Mankala
 
         private void Score()
         {
+            int p1score = score.calculateScore(players[0]);
+            int p2score = score.calculateScore(players[1]);
 
+            view.DrawString("player 1 scored: " + p1score + " and player 2 scored: " + p2score);
+            view.DrawString("press any key to close the program");
+            InputHelper.GetKey();
         }
     }
 }

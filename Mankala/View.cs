@@ -22,9 +22,14 @@ namespace Mankala
             Update();
         }
 
-        public void Draw(Player[] players)
+        public void Clear()
         {
             Console.Clear();
+        }
+
+        public void Draw(Player[] players)
+        {
+            Clear();
 
 
             Console.ForegroundColor = ConsoleColor.Red;
@@ -34,7 +39,6 @@ namespace Mankala
 
         public void DrawString(string s)
         {
-            Console.Clear();
             Console.Write(s + "\n");
             Console.ResetColor();
         }
