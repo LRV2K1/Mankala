@@ -8,14 +8,18 @@ namespace Mankala
 {
     public class View
     {
-        Pit[] board;
-        public View(Pit[] board) 
+        static Pit[] board;
+        Player currentPlayer;
+
+        public View(Pit[] gameboard) 
         {
-            this.board = board;
+            board = gameboard;
         }
 
         public void Draw(Player player)
         {
+            currentPlayer = player;
+
             List<NormalPit> playerpits = player.pits.ToList();
 
             Console.Clear();
@@ -33,7 +37,7 @@ namespace Mankala
                     Console.ForegroundColor = ConsoleColor.Blue;
 
                 if (i < board.Length / 2)
-                    DrawPit(board[i],(board.Length/2 - i - 1) * 7, 2);
+                    DrawPit(board[i], (board.Length / 2 - i - 1) * 7, 2);
                 else
                     DrawPit(board[i], (i - board.Length / 2) * 7, 8);
             }
@@ -75,6 +79,10 @@ namespace Mankala
             Console.Write("|     |");
             Console.SetCursorPosition(left, top + 4);
             Console.Write("+-----+");
+        }
+
+        public static void Update()
+        {
         }
     }
 }
