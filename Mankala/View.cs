@@ -9,7 +9,8 @@ namespace Mankala
     public class View
     {
         Pit[] board;
-        public View(Pit[] board) 
+
+        public void setBoard(Pit[] board)
         {
             this.board = board;
         }
@@ -37,7 +38,6 @@ namespace Mankala
                 else
                     DrawPit(board[i], (i - board.Length / 2) * 7, 8);
             }
-
             Console.ResetColor();
         }
 
@@ -54,7 +54,7 @@ namespace Mankala
         public void DrawString(string s)
         {
             Console.Clear();
-            Console.Write(s);
+            Console.Write(s + "\n");
             Console.ResetColor();
         }
 

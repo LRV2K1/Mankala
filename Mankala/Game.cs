@@ -22,13 +22,35 @@ namespace Mankala
 
         public void MakeGame()
         {
-            GameFactory factory = new WariFactory();
-            board = factory.MakeBoard(10);
+            view = new View();
+            GameFactory factory = null;
+
+            bool modeSelected = false;
+
+            view.DrawString("enter 1 for mankala and 2 for wari");
+
+            while (!modeSelected)
+            {
+                int mode = 0;
+                try { mode = (int)Char.GetNumericValue(InputHelper.GetKey()); }
+                catch { view.DrawString("not a valid game mode, enter 1 for mankala and 2 for wari"); }
+                switch (mode)
+                {
+                    case 1:
+                        factory = new MankalaFactory(); modeSelected = true; break;
+                    case 2:
+                        factory = new WariFactory(); modeSelected = true; break;
+                    default:
+                        view.DrawString("not a valid game mode, enter 1 for mankala and 2 for wari"); break;
+                }
+            }
+           
+            board = factory.MakeBoard(6);
             players = factory.MakePlayers(board);
             score = factory.MakeScore();
             ruleset = factory.MakeRuleSet();
 
-            view = new View(board);
+            view.setBoard(board);
 
             currentPlayer = 0;
         }
