@@ -19,6 +19,8 @@ namespace Mankala
 
         public void Move(Ruleset rules)
         {
+            View.Update();
+
             //no moves for this player
             if (!rules.HasMoves(this))
                 return;

@@ -16,9 +16,7 @@ namespace Mankala
         Pit[] board;
         Score score;
 
-        public Game()
-        {
-        }
+        public Game() { }
 
         public void MakeGame()
         {

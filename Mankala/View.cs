@@ -12,33 +12,13 @@ namespace Mankala
 
         public void setBoard(Pit[] board)
         {
-            this.board = board;
+            board = gameboard;
         }
 
         public void Draw(Player player)
         {
-            List<NormalPit> playerpits = player.pits.ToList();
-
-            Console.Clear();
-
-            Console.WriteLine(player.name);
-
-            for (int i = 0; i < board.Length; i++)
-            {
-                if (playerpits.Contains(board[i]))
-                    Console.ForegroundColor = ConsoleColor.White;
-                else
-                    Console.ForegroundColor = ConsoleColor.Gray;
-
-                if (board[i] is HomePit)
-                    Console.ForegroundColor = ConsoleColor.Blue;
-
-                if (i < board.Length / 2)
-                    DrawPit(board[i],(board.Length/2 - i - 1) * 7, 2);
-                else
-                    DrawPit(board[i], (i - board.Length / 2) * 7, 8);
-            }
-            Console.ResetColor();
+            currentPlayer = player;
+            Update();
         }
 
         public void Draw(Player[] players)
@@ -58,23 +38,70 @@ namespace Mankala
             Console.ResetColor();
         }
 
-        private void DrawString(string s, int left, int top)
+        private static void DrawString(string s, int left, int top)
         {
 
         }
 
-        private void DrawPit(Pit pit, int left, int top)
+        private static void DrawPit(Pit pit, int left, int top)
         {
+            //first lines
             Console.SetCursorPosition(left, top);
             Console.Write("+-----+");
             Console.SetCursorPosition(left, top + 1);
             Console.Write("|     |");
             Console.SetCursorPosition(left, top + 2);
-            Console.Write("|  " + pit.stones + "  |");
+
+            //number of stones in pit
+            string line = "|     |";
+            int l = pit.stones.ToString().Length;
+            line = line.Remove(3 - (l - 1) / 2, l);
+            line = line.Insert(3 - (l - 1) / 2, pit.stones.ToString());
+            Console.Write(line);
+
+            //last lines
             Console.SetCursorPosition(left, top + 3);
             Console.Write("|     |");
             Console.SetCursorPosition(left, top + 4);
             Console.Write("+-----+");
+        }
+
+        public static void Update()
+        {
+            //clear the console
+            Console.Clear();
+
+            //write currentplayer name
+            Console.WriteLine(currentPlayer.name);
+
+            //offset for homepits
+            int offset = 0;
+
+            //draw all pits
+            for (int i = 0; i < board.Length; i++)
+            {
+                //if it is the current players pit
+                if (board[i].owner == currentPlayer)
+                    Console.ForegroundColor = ConsoleColor.White;
+                else
+                    Console.ForegroundColor = ConsoleColor.Gray;
+
+                //if it is a homepit
+                if (board[i] is HomePit)
+                    Console.ForegroundColor = ConsoleColor.Blue;
+
+                if (i < board.Length / 2)
+                    DrawPit(board[i], (board.Length / 2 - i - 1) * 7, 3);
+                else
+                    DrawPit(board[i], (i - board.Length / 2 + offset) * 7, 9);
+
+                if (board[i] is HomePit)
+                    offset++;
+            }
+
+            //end write
+            Console.Write("\n");
+            Console.ResetColor();
         }
     }
 }

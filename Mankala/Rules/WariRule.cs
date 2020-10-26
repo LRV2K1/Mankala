@@ -13,16 +13,13 @@ namespace Mankala.Rules
 
         public override void MoveEnd(Pit pit, Player player)
         {
-            List<NormalPit> playerpits = player.pits.ToList();
-
             //end in pit not of player
-            if (!playerpits.Contains(pit))
+            if (pit.owner != player)
             {
                 if (pit.stones > 1 && pit.stones < 4)
                 {
                     //take stones
-                    player.collector.CollectStones(pit.stones);
-                    pit.stones = 0;
+                    player.collector.CollectStones((pit as NormalPit).takeStones());
                 }
             }
         }

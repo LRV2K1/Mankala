@@ -14,30 +14,27 @@ namespace Mankala.Rules
 
         public override void MoveEnd(Pit pit, Player player)
         {
-            List<NormalPit> playerpits = player.pits.ToList();
-
             //end in own homepit
-            if (pit is HomePit && pit == player.collector)
+            if (pit is HomePit)
             {
                 //go again
-                player.Move(this);
+                if (pit == player.collector)
+                    player.Move(this);
                 return;
             }
 
             //end in own pit, and opposite pit contains stones
-            if ((pit as NormalPit).opposite.stones != 0 && playerpits.Contains(pit))
+            if ((pit as NormalPit).opposite.stones != 0 && pit.owner == player)
             {
                 //take stones, and place them in own homepit
-                player.collector.CollectStones((pit as NormalPit).opposite.stones + pit.stones);
-                pit.stones = 0;
-                (pit as NormalPit).opposite.stones = 0;
+                player.collector.CollectStones((pit as NormalPit).opposite.takeStones() + (pit as NormalPit).takeStones());
             }
         }
 
         public override bool NextPlayer(Pit pit, Player player)
         {
             //end in own homepit
-            if (pit is HomePit && pit == player.collector)
+            if (pit is HomePit)
                 return true;
 
             //end in a non empty pit

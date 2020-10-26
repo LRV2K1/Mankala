@@ -25,8 +25,12 @@ namespace Mankala.Factory
                     p1[i - 1].next = p1[i];
                     p2[i - 1].next = p2[i];
                 }
-                p1[i].opposite = p2[i];
-                p2[i].opposite = p1[i];
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                p1[i].opposite = p2[n - i - 1];
+                p2[i].opposite = p1[n - i - 1];
             }
 
             p1[p1.Length - 1].next = p2[0];
@@ -60,7 +64,9 @@ namespace Mankala.Factory
             for (int i = 0; i < board.Length/2; i++)
             {
                 players[0].pits[i] = (board[i] as NormalPit);
+                board[i].owner = players[0];
                 players[1].pits[i] = (board[i + board.Length / 2] as NormalPit);
+                board[i + board.Length / 2].owner = players[1];
             }
 
             return players;
