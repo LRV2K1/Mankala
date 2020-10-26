@@ -6,7 +6,11 @@ namespace Mankala.Pits
 {
     public class HomePit : Pit ,ICollector
     {
-        int ICollector.stones { get; set; }
+        int ICollector.stones 
+        { 
+            get { return stones; }
+            set { stones = value; }
+        }
 
         public HomePit(int stones)
             : base(stones)
