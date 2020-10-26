@@ -8,9 +8,10 @@ namespace Mankala
 {
     public class View
     {
-        Pit[] board;
+        static Pit[] board;
+        static Player currentPlayer;
 
-        public void setBoard(Pit[] board)
+        public void setBoard(Pit[] gameboard)
         {
             board = gameboard;
         }
