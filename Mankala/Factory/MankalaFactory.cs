@@ -81,8 +81,10 @@ namespace Mankala.Factory
             for (int i = 0; i < board.Length / 2 - 1; i++)
             {
                 players[0].pits[i] = (board[i] as NormalPit);
+                board[i].owner = players[0];
                 players[1].pits[i] = (board[i + board.Length / 2] as NormalPit);
-        }
+                board[i + board.Length / 2].owner = players[1];
+            }
 
             return players;
         }

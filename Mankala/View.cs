@@ -69,22 +69,25 @@ namespace Mankala
 
         public static void Update()
         {
-            List<NormalPit> playerpits = currentPlayer.pits.ToList();
-
             //clear the console
             Console.Clear();
 
+            //write currentplayer name
             Console.WriteLine(currentPlayer.name);
 
+            //offset for homepits
             int offset = 0;
 
+            //draw all pits
             for (int i = 0; i < board.Length; i++)
             {
-                if (playerpits.Contains(board[i]))
+                //if it is the current players pit
+                if (board[i].owner == currentPlayer)
                     Console.ForegroundColor = ConsoleColor.White;
                 else
                     Console.ForegroundColor = ConsoleColor.Gray;
 
+                //if it is a homepit
                 if (board[i] is HomePit)
                     Console.ForegroundColor = ConsoleColor.Blue;
 
