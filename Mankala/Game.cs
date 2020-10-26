@@ -30,7 +30,7 @@ namespace Mankala
             {
                 view.DrawString("enter 1 for mankala and 2 for wari");
                 int mode = 0;
-                try { mode = (int)Char.GetNumericValue(InputHelper.GetKey()); view.Clear(); }
+                try { mode = InputHelper.GetNumber(); view.Clear(); }
                 catch { view.DrawString("not a valid game mode"); }
                 switch (mode)
                 {

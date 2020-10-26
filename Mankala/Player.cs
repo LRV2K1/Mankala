@@ -27,10 +27,10 @@ namespace Mankala
                 return;
 
             //get the number of the pit
-            int pitnummer = (int)Char.GetNumericValue(InputHelper.GetKey());
+            int pitnummer = InputHelper.GetNumber();
             while (pitnummer >= pits.Length || pitnummer < 0 || pits[pitnummer].stones <= 0)
             {
-                pitnummer = (int)Char.GetNumericValue(InputHelper.GetKey());
+                pitnummer = InputHelper.GetNumber();
             }
 
             Pit p = pits[pitnummer];
