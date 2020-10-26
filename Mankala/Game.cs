@@ -16,13 +16,11 @@ namespace Mankala
         Pit[] board;
         Score score;
 
-        public Game()
-        {
-        }
+        public Game() { }
 
         public void MakeGame()
         {
-            GameFactory factory = new WariFactory();
+            GameFactory factory = new MankalaFactory();
             board = factory.MakeBoard(10);
             players = factory.MakePlayers(board);
             score = factory.MakeScore();

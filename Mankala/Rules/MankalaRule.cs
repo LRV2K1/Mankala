@@ -17,10 +17,11 @@ namespace Mankala.Rules
             List<NormalPit> playerpits = player.pits.ToList();
 
             //end in own homepit
-            if (pit is HomePit && pit == player.collector)
+            if (pit is HomePit)
             {
                 //go again
-                player.Move(this);
+                if (pit == player.collector)
+                    player.Move(this);
                 return;
             }
 

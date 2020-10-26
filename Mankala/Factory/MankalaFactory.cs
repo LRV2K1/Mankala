@@ -15,6 +15,8 @@ namespace Mankala.Factory
         {
             NormalPit[] p1 = new NormalPit[n];
             NormalPit[] p2 = new NormalPit[n];
+
+            //construct pits
             for (int i = 0; i < n; i++)
             {
                 p1[i] = new NormalPit(4);
@@ -25,8 +27,12 @@ namespace Mankala.Factory
                     p1[i - 1].next = p1[i];
                     p2[i - 1].next = p2[i];
                 }
-                p1[i].opposite = p2[i];
-                p2[i].opposite = p1[i];
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                p1[i].opposite = p2[n-i-1];
+                p2[i].opposite = p1[n-i-1];
             }
 
             HomePit hp1 = new HomePit(0);
