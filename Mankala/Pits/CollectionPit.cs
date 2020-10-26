@@ -8,9 +8,7 @@ namespace Mankala.Pits
     {
         public int stones { get; set; }
 
-        public CollectionPit()
-        {
-        }
+        public CollectionPit() { }
 
         public int GetStoneScore()
         {

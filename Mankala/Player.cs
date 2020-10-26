@@ -8,6 +8,7 @@ namespace Mankala
 {
     public class Player
     {
+        //player has a name, is used in player identification on the view.
         public string name;
         public ICollector collector;
         public NormalPit[] pits;
