@@ -81,7 +81,7 @@ namespace Mankala
                 else
                     DrawPit(board[i], (i - board.Length / 2) * 7, 8);
             }
-
+            Console.Write("\n");
             Console.ResetColor();
         }
     }

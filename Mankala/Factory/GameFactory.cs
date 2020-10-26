@@ -17,6 +17,7 @@ namespace Mankala.Factory
 
         public virtual Player[] MakePlayers(Pit[] board)
         {
+            //make players
             Player[] players = new Player[2];
             players[0] = new Player("Player 1");
             players[1] = new Player("Player 2");
