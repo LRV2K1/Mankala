@@ -15,10 +15,12 @@ namespace Mankala.Rules
         {
             List<NormalPit> playerpits = player.pits.ToList();
 
+            //end in pit not of player
             if (!playerpits.Contains(pit))
             {
                 if (pit.stones > 1 && pit.stones < 4)
                 {
+                    //take stones
                     player.collector.CollectStones(pit.stones);
                     pit.stones = 0;
                 }

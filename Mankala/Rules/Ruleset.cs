@@ -23,6 +23,7 @@ namespace Mankala.Rules
 
         public virtual bool HasMoves(Player player)
         {
+            //check if all pits are empty
             for (int i = 0; i < player.pits.Length; i++)
             {
                 if (player.pits[i].stones > 0)
