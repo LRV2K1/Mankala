@@ -46,12 +46,21 @@ namespace Mankala
 
         private static void DrawPit(Pit pit, int left, int top)
         {
+            //first lines
             Console.SetCursorPosition(left, top);
             Console.Write("+-----+");
             Console.SetCursorPosition(left, top + 1);
             Console.Write("|     |");
             Console.SetCursorPosition(left, top + 2);
-            Console.Write("|  " + pit.stones + "  |");
+
+            //number of stones in pit
+            string line = "|     |";
+            int l = pit.stones.ToString().Length;
+            line = line.Remove(3 - (l - 1) / 2, l);
+            line = line.Insert(3 - (l - 1) / 2, pit.stones.ToString());
+            Console.Write(line);
+
+            //last lines
             Console.SetCursorPosition(left, top + 3);
             Console.Write("|     |");
             Console.SetCursorPosition(left, top + 4);
@@ -62,9 +71,12 @@ namespace Mankala
         {
             List<NormalPit> playerpits = currentPlayer.pits.ToList();
 
+            //clear the console
             Console.Clear();
 
             Console.WriteLine(currentPlayer.name);
+
+            int offset = 0;
 
             for (int i = 0; i < board.Length; i++)
             {
@@ -77,10 +89,15 @@ namespace Mankala
                     Console.ForegroundColor = ConsoleColor.Blue;
 
                 if (i < board.Length / 2)
-                    DrawPit(board[i], (board.Length / 2 - i - 1) * 7, 2);
+                    DrawPit(board[i], (board.Length / 2 - i - 1) * 7, 3);
                 else
-                    DrawPit(board[i], (i - board.Length / 2) * 7, 8);
+                    DrawPit(board[i], (i - board.Length / 2 + offset) * 7, 9);
+
+                if (board[i] is HomePit)
+                    offset++;
             }
+
+            //end write
             Console.Write("\n");
             Console.ResetColor();
         }

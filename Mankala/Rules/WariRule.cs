@@ -21,8 +21,7 @@ namespace Mankala.Rules
                 if (pit.stones > 1 && pit.stones < 4)
                 {
                     //take stones
-                    player.collector.CollectStones(pit.stones);
-                    pit.stones = 0;
+                    player.collector.CollectStones((pit as NormalPit).takeStones());
                 }
             }
         }
