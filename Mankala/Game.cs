@@ -18,7 +18,6 @@ namespace Mankala
 
         public Game()
         {
-            view = new View();
         }
 
         public void MakeGame()
@@ -29,14 +28,16 @@ namespace Mankala
             score = factory.MakeScore();
             ruleset = factory.MakeRuleSet();
 
+            view = new View(board);
+
             currentPlayer = 0;
         }
 
         public void Run()
         {
-            while (!InputHelper.KeyPressed('Q'))
+            while (!ruleset.GameFinished(players, currentPlayer))
             {
-                view.Draw(board, players[currentPlayer]);
+                view.Draw(players[currentPlayer]);
                 players[currentPlayer].Move(ruleset);
                 NextPlayer();
             }

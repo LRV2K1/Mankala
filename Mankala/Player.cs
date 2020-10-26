@@ -19,14 +19,20 @@ namespace Mankala
 
         public void Move(Ruleset rules)
         {
-            char c = InputHelper.GetKey();
-            while ((int)Char.GetNumericValue(c) >= pits.Length || (int)Char.GetNumericValue(c) < 0)
+            //no moves for this player
+            if (!rules.HasMoves(this))
+                return;
+
+            //get the number of the pit
+            int pitnummer = (int)Char.GetNumericValue(InputHelper.GetKey());
+            while (pitnummer >= pits.Length || pitnummer < 0 || pits[pitnummer].stones <= 0)
             {
-                c = InputHelper.GetKey();
+                pitnummer = (int)Char.GetNumericValue(InputHelper.GetKey());
             }
 
-            Pit p = pits[(int)Char.GetNumericValue(c)];
+            Pit p = pits[pitnummer];
 
+            //take stones, and place them in the pits
             do
             {
                 int n = (p as NormalPit).takeStones();
@@ -36,8 +42,11 @@ namespace Mankala
                     p.PlaceStone(1);
                     n--;
                 }
+
+                //check the rules
                 rules.MoveEnd(p, this);
             }
+            //keep doing this untill it is the next player's turn
             while (!rules.NextPlayer(p, this));
         }
     }
