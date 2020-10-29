@@ -37,7 +37,7 @@ namespace Mankala
                 Console.Write("\b");
 
             if (number == "")
-                return 0;
+                return -1;
             else
                 return int.Parse(number);
         }
