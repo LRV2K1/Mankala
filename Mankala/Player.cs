@@ -54,3 +54,5 @@ namespace Mankala
         }
     }
 }
+/* changes from design doc:
+ * new string, name, allows player to be named, currently only used for "Player 1" and "Player 2" but aids in extendability */

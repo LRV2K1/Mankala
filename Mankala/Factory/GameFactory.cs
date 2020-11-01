@@ -31,3 +31,9 @@ namespace Mankala.Factory
         }
     }
 }
+
+/* changes from design doc:
+ * MakeBoard now takes a number of pits as argument and returns the pit array
+ * MakeRuleset returns the ruleset
+ * MakePlayers returns the player array
+ * MakeScore returns the score object */

@@ -110,3 +110,5 @@ namespace Mankala
         }
     }
 }
+/* changes from design doc:
+ * class almost entirely new because the view was not elaborated on in the original design */

@@ -51,3 +51,6 @@ namespace Mankala
         }
     }
 }
+
+/* changes from design doc:
+ * new method getnumber, allows for numbers above 9 to be picked, helps with extensibility for higher pit sizes */
