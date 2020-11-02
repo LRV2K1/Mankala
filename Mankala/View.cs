@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
 using Mankala.Pits;
 
 namespace Mankala
@@ -41,11 +38,6 @@ namespace Mankala
         {
             Console.Write(s + "\n");
             Console.ResetColor();
-        }
-
-        private static void DrawString(string s, int left, int top)
-        {
-
         }
 
         private static void DrawPit(Pit pit, int left, int top)
@@ -96,9 +88,17 @@ namespace Mankala
                     Console.ForegroundColor = ConsoleColor.Blue;
 
                 if (i < board.Length / 2)
+                {
+                    Console.SetCursorPosition((board.Length / 2 - i - 1) * 7 + 3, 2);
+                    Console.Write(i);
                     DrawPit(board[i], (board.Length / 2 - i - 1) * 7, 3);
+                }
                 else
+                {
+                    Console.SetCursorPosition((i - board.Length / 2 + offset) * 7 + 3, 14);
+                    Console.Write(i - board.Length/2);
                     DrawPit(board[i], (i - board.Length / 2 + offset) * 7, 9);
+                }
 
                 if (board[i] is HomePit)
                     offset++;
