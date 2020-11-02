@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Mankala.Pits;
+﻿using Mankala.Pits;
 using Mankala.Rules;
 
 namespace Mankala.Factory
