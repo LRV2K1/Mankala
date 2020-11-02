@@ -32,3 +32,7 @@ namespace Mankala.Rules
         }
     }
 }
+
+/* changes from design doc:
+ * GameFinished takes the current player index as argument
+ * NextPlayer, GameFinished and HasMoves return a boolean */

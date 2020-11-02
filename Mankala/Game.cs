@@ -82,3 +82,6 @@ namespace Mankala
         }
     }
 }
+
+/* changes from design doc:
+ * currentplayer is now an int, refering to the position of the player in the array instead of the player itself */

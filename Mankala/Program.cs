@@ -20,3 +20,7 @@ namespace Mankala
         }
     }
 }
+
+/* changes from design doc:
+ * was originally named main, now program
+ * new method: Run(), separated from Main() to improve cohesion */
